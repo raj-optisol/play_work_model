@@ -1,0 +1,56 @@
+<div class="content" ng-controller="SanctioningBodyCardsCtrl">
+  <div class="row page-header">
+      <div class="large-8 columns">
+          <h2><span><%= t("labels.cards_for", name: @sanctioning_body.name) %></span></h2>
+      </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+        <form name="filterForm" class="custom" novalidate ng-submit="applyFilter(filter)" >
+          <div class="panel primary">
+            <header>
+              <h3>Filters</h3>
+            </header>
+            <section>
+              <div class="row">
+                <div class="large-12 columns" >
+                  <input id="filter_name" type="text" name="filter[name]" ng-model="filter.organization_name" placeholder="<%= t('label.org.name')%>" auto-complete="orgData" on-auto-complete-select="selectOrg" auto-complete-id-property="id">
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-12 columns" >
+                  <%= select_tag "filter[status]", options_for_select(CardData.get_status_values.sort), id: 'filter.status', prompt: 'All Statuses', "ng-model" => "filter.status", 'zurb-select' => 'zurb-select' %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-6 columns">
+                  <input type="text" class="pad-none" name="filter[last_name]" ng-model="filter.last_name" placeholder="<%=t('forms.fields.last_name')%>" />
+                </div>
+                <div class="large-6 columns">
+                  <input type="text" class="pad-none" name="filter[first_name]" ng-model="filter.first_name" ng-disabled="(!filter.last_name || filter.last_name.length < 3)" placeholder="<%=t('forms.fields.first_name')%>" />
+                </div>
+              </div>
+              <div class="row action-row">
+                <div class="large-8 columns" >
+                  <%= text_field_tag "filter[birthdate]", nil, {"ng-model" => "filter.birthdate", "datepicker" => '{"format": "yyyy-MM-dd", "defaultDate":"-10y"}', "placeholder" => "Birthdate" }  %>
+                </div>
+                <div class="large-4 columns text-right">
+                  <button type="submit" class="btn" ng-disabled="form.$invalid" ><%= t("label.go") %></button>
+                  <button type="reset"  class="btn secondary" ng-click="clearFilter()"><%= t("label.reset") %></button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </form>
+      </div>
+      <div class="large-6 columns">
+        <%= render "cards/index/extra_panel" %>
+      </div>
+    </div>  <!-- END HEADER ROW -->
+
+
+    <div class="row">
+      <div class="mygrid" grid-data="myData"></div>
+    </div>
+    <%= render "common/selected_row" %>
+  </div>

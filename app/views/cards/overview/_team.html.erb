@@ -1,0 +1,25 @@
+<div id="teamoverview" class="content" >
+
+  <div class="row page-header">
+    <div class="large-8 columns">
+      <h2><span>Print Cards</span></h2>
+    </div>
+    <div class="large-4 columns right-align">
+      <%= render_cell :mini_cart, :show, current_user: current_user, organization: @org%>
+    </div>
+  </div>
+  <div style="display:none" ng-init="order = <%= @order.to_json %>"></div>
+
+  <div class="row">
+    <div class="large-7 columns">
+      <% if current_user.can_manage?(@org, [PermissionSet::REQUEST_CARD, PermissionSet::PRINT_CARD ]) %>
+        <%= render_cell :needs_sanctioning, :show, organization: @org, request: @req, obj: @obj %>
+      <% end %>
+    </div>
+
+    <div class="large-5 columns">
+      <%= render 'pricing_table' %>
+    </div>
+  </div>
+
+</div>

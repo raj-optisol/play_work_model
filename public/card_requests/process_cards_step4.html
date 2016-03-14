@@ -1,0 +1,494 @@
+<!DOCTYPE html ng-app="App">
+<!--[if lt IE 7 ]> <html class="ie6" lang="en" style="height: 100%;"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en" style="height: 100%;"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en" style="height: 100%;"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en" style="height: 100%;"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+
+    <!-- Uncomment to make IE8 render like IE7 -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CARD REQUEST - Process Step 3</title>
+    <link href="/assets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <meta content="authenticity_token" name="csrf-param">
+    <meta content="4jmVTspNc3Q3BCeCxXqqnNZgSkjEM3AYCd6jpzdDJ4k=" name="csrf-token">
+    <script async="" src="//www.google-analytics.com/analytics.js" style=""></script>
+    <script>
+        window.btcse = "MIIBCgKCAQEAtxQcSKbAZp7AKXtiQGqQyjs5snLRj2yN9F92qzhX4lBEsMQxPk7qiUINeJIIKNZbh0NptdgiO5MQq3d0bXO6frS4sgWlRUTJCZN++t/tC5WHNNnhh/MTj934B/FKbA7wToEK9G771Vj37LveYOaO65HIaIRmcU/2haGa2i4MYYSILy6Da/c0UBqJaTTejUgu24e2KFhrzKWuUBeBu4sZtzYn5LCANsoJ6Bc1bVLUWIfojZXosvLRmQyf/WTLbX34kPNrER8cVihTGFgLQTPcgdCzn3NJki5/4BXVEJDwA5P0UE7VSE/5r/crvRqOUf77asDgByMFvgct/DyRwu8vPwIDAQAB";
+    </script>
+</head>
+<body style="min-height: 100%;" ng-controller="AppController">
+
+<!-- SITE TOP BAR -->
+<header id="navheader" class="sitebar">
+    <div class="sitebar-left" style="right: 0;">
+        <a href="/" class="logo"></a>
+    </div>
+</header>
+
+
+<div class="page-wrap">
+<div class="page-content content">
+
+<!--
+########################################
+START PROCESS CARDS STEP 4 TEMPLATE
+########################################
+-->
+
+<div class="content" ng-controller="">
+
+
+<!-- PAGE HEADER ROW -->
+<div class="row page-header">
+    <div class="large-12 columns">
+        <h2>
+            <span>Process Staff Card</span>
+            <a class="icnlink" href="#">
+                <i class="icn-caret-left"></i>
+                <span>Back to Cards Main</span>
+            </a>
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+<div class="row">
+
+<!-- COLUMN LEFT -->
+<div class="small-12 large-7 columns">
+    <div class="panel secondary">
+        <header>
+            <h3>Card Request</h3>
+            <p>Default text that servers no other purpose than to be a placeholder for text based content that may or may not even go here.  Feel free to delete this paragraph completely if you can read this.</p>
+        </header>
+
+
+        <!-- USER INFO -->
+        <section class="divide-bottom-dotted">
+            <div class="row">
+                <div class="small-12 large-12 columns">
+                    <div class="user-avatar left" style="margin-right: 24px;">
+                        <img src="https://res.cloudinary.com/kyck-com/image/upload/user_avatar_syy1gy.png" alt=""/>
+                    </div>
+                    <div class="left">
+                        <div class="info-block minimal">
+                            <h5>Name</h5>
+                            <p><a href="#">Robert John Peterson</a></p>
+
+                            <h5>ID</h5>
+                            <p>79823664783</p>
+
+                            <h5>User Type</h5>
+                            <p>Staff</p>
+
+                            <h5>Expiration Date</h5>
+                            <p>08/14/2015</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ORGANIZATION INFO -->
+        <section class="divide-bottom-dotted">
+            <div class="row">
+                <div class="small-12 large-12 columns">
+                    <div class="org-avatar left" style="margin-right: 24px;">
+                        <img src="https://res.cloudinary.com/kyck-com/image/upload/c_fill/iuq83jmzwsp54x9shj2k.png" alt=""/>
+                    </div>
+                    <div class="left">
+                        <div class="info-block minimal">
+                            <h5>Organization Name</h5>
+                            <p><a href="#">Carolina Rapids</a></p>
+
+                            <h5>Organization ID</h5>
+                            <p>79823664783</p>
+
+                            <h5>Organization Type</h5>
+                            <p>Club</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEAGUE NAME & LEAGUE ID -->
+        <section>
+            <div class="row">
+                <div class="small-12 large-12 columns">
+                    <div class="info-block minimal">
+                        <h5>League Name</h5>
+                        <p><a href="#">Northern Counties</a></p>
+
+                        <h5>League ID</h5>
+                        <p>88373622</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <form name="processCardForm" class="custom" action="process_cards_step4.html" method="post" ky-submit>
+    <div class="panel secondary button-panel">
+        <!-- These buttons can also be <a>nchors with class .btn -->
+        <a href="#approveUserCardRequest" class="btn large" data-reveal-id="approveUserCardRequest">APPROVE</a>
+        <a href="/card_requests/_modal_reject_card_request.html" data-reveal-ajax="true" data-reveal-id="modal_rejectCardRequests" class="btn large">REJECT</a>
+        <span>OR</span>
+        <a href="#saveForLater" type="submit" class="btn">SAVE FOR LATER</a>
+    </div>
+    </form>
+</div>
+
+<!-- COLUMN RIGHT -->
+<div class="small-12 large-5 columns">
+    <div class="panel primary">
+        <header class="bordered">
+            <h3>POSSIBLE MATCHING CARDS</h3>
+            <p>Some default text that Im putting in here just for the fun of it.  This paragraph serves no other purpose.</p>
+        </header>
+        <div class="vtag medium divide-bottom-dotted">
+            <div class="vtag-wrap">
+                <img ng-src="" src="https://res.cloudinary.com/kyck-com/image/upload/user_avatar_syy1gy.png">
+
+                <h5>Name:</h5>
+                <p>Robert John Peterson<br>
+                    Staff<br>
+                    8584HR43212</p>
+
+                <h5>Organization:</h5>
+                <p><a href="/messaging/_modal_messaging_threads_current.html" data-reveal-ajax="true" data-reveal-id="modal_messaging_threads_current">Carolina Rapids</a><br>
+                    Club<br>
+                    8843GGW6678</p>
+
+                <h5>League:</h5>
+                <p>Northern Counties<br>
+                    6547ERF556Q</p>
+
+                <h5>Timeline:</h5>
+                <p>
+                    Requested on 12/12/2014 @ 01:13pm<br>
+                    Processed on 12/13/2014 @ 10:13pm<br>
+                    Approved on 12/14/2014 @ 01:27pm<br>
+                    Expires on 08/01/2014</p>
+            </div>
+        </div>
+        <div class="vtag medium divide-bottom-dotted">
+            <div class="vtag-wrap">
+                <img ng-src="" src="https://res.cloudinary.com/kyck-com/image/upload/user_avatar_syy1gy.png">
+
+                <h5>Name:</h5>
+                <p>Robert John Peterson<br>
+                    Staff<br>
+                    8584HR43212</p>
+
+                <h5>Organization:</h5>
+                <p><a href="/messaging/_modal_messaging_threads.html" data-reveal-ajax="true" data-reveal-id="modal_messaging_threads">Carolina Rapids</a><br>
+                    Club<br>
+                    8843GGW6678</p>
+
+                <h5>League:</h5>
+                <p>Northern Counties<br>
+                    6547ERF556Q</p>
+
+                <h5>Timeline:</h5>
+                <p>
+                    Requested on 12/12/2014 @ 01:13pm<br>
+                    Processed on 12/13/2014 @ 10:13pm<br>
+                    Approved on 12/14/2014 @ 01:27pm<br>
+                    Expires on 08/01/2014</p>
+            </div>
+        </div>
+        <div class="vtag medium divide-bottom-dotted">
+            <div class="vtag-wrap">
+                <img ng-src="" src="https://res.cloudinary.com/kyck-com/image/upload/user_avatar_syy1gy.png">
+
+                <h5>Name:</h5>
+                <p>Robert John Peterson<br>
+                    Staff<br>
+                    8584HR43212</p>
+
+                <h5>Organization:</h5>
+                <p><a href="/messaging/_modal_messaging_threads.html" data-reveal-ajax="true" data-reveal-id="modal_messaging_threads">Carolina Rapids</a><br>
+                    Club<br>
+                    8843GGW6678</p>
+
+                <h5>League:</h5>
+                <p>Northern Counties<br>
+                    6547ERF556Q</p>
+
+                <h5>Timeline:</h5>
+                <p>
+                    Requested on 12/12/2014 @ 01:13pm<br>
+                    Processed on 12/13/2014 @ 10:13pm<br>
+                    Approved on 12/14/2014 @ 01:27pm<br>
+                    Expires on 08/01/2014</p>
+            </div>
+        </div>
+        <div class="vtag medium">
+            <div class="vtag-wrap">
+                <img ng-src="" src="https://res.cloudinary.com/kyck-com/image/upload/user_avatar_syy1gy.png">
+
+                <h5>Name:</h5>
+                <p>Robert John Peterson<br>
+                    Staff<br>
+                    8584HR43212</p>
+
+                <h5>Organization:</h5>
+                <p><a href="/messaging/_modal_messaging_threads.html" data-reveal-ajax="true" data-reveal-id="modal_messaging_threads">Carolina Rapids</a><br>
+                    Club<br>
+                    8843GGW6678</p>
+
+                <h5>League:</h5>
+                <p>Northern Counties<br>
+                    6547ERF556Q</p>
+
+                <h5>Timeline:</h5>
+                <p>
+                    Requested on 12/12/2014 @ 01:13pm<br>
+                    Processed on 12/13/2014 @ 10:13pm<br>
+                    Approved on 12/14/2014 @ 01:27pm<br>
+                    Expires on 08/01/2014</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+</div>
+
+<!--
+########################################
+END PROCESS CARDS STEP 4 TEMPLATE
+########################################
+-->
+
+</div>
+
+
+
+</div>
+
+
+<div id="modal_rejectCardRequests" class="reveal-modal medium"></div>
+<div id="modal_messaging_threads" class="reveal-modal medium"></div>
+<div id="modal_messaging_threads_current" class="reveal-modal medium"></div>
+<div id="modal_messaging_conversation" class="reveal-modal medium"></div>
+<!--
+########################################
+START MODAL 4B TEMPLATE
+Shown when Organization link is clicked in the "matching cards" column on the right.
+########################################
+-->
+
+
+
+
+
+
+<script>
+    (function(win) {
+        win.CLOUDINARY_CONFIG={cloud_name: 'kyck-com', api_key: '466296697657298'};
+    })(window);
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-24153037-12', 'kyck.com');
+    ga('send', 'pageview');
+
+</script>
+
+<script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.ui.core.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.ui.widget.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.ui.position.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.ui.menu.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.ui.autocomplete.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.ui.datepicker.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.ui.effect.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.ui.effect-slide.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.ui.effect-fade.js?body=1" type="text/javascript"></script>
+<script src="/assets/angular/angular.js?body=1" type="text/javascript"></script>
+<script src="/assets/angular/angular-resource.js?body=1" type="text/javascript"></script>
+<script src="/assets/angular/angular-animate.js?body=1" type="text/javascript"></script>
+<script src="/assets/angular/ng-grid.debug.js?body=1" type="text/javascript"></script>
+<script src="/assets/angular/angular-ui-states.js?body=1" type="text/javascript"></script>
+<script src="/assets/angular/angular-ui-event.js?body=1" type="text/javascript"></script>
+<script src="/assets/angular/angular-ui-map.js?body=1" type="text/javascript"></script>
+<script src="/assets/angular/angular-ui-unique.js?body=1" type="text/javascript"></script>
+<script src="/assets/restangular.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/underscore-min.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.alerts.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.clearing.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.cookie.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.dropdown.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.forms.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.joyride.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.magellan.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.orbit.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.reveal.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.section.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.tooltips.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.topbar.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.interchange.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.placeholder.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/foundation.abide.js?body=1" type="text/javascript"></script>
+<script src="/assets/foundation/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/custom.modernizr.js?body=1" type="text/javascript"></script>
+<script src="/assets/cloudinary/jquery.ui.widget.js?body=1" type="text/javascript"></script>
+<script src="/assets/cloudinary/jquery.iframe-transport.js?body=1" type="text/javascript"></script>
+<script src="/assets/cloudinary/jquery.fileupload.js?body=1" type="text/javascript"></script>
+<script src="/assets/cloudinary/jquery.cloudinary.js?body=1" type="text/javascript"></script>
+<script src="/assets/cloudinary/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/cloudinary/canvas-to-blob.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/cloudinary/load-image.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/cloudinary/jquery.fileupload-process.js?body=1" type="text/javascript"></script>
+<script src="/assets/cloudinary/jquery.fileupload-image.js?body=1" type="text/javascript"></script>
+<script src="/assets/cloudinary/jquery.fileupload-validate.js?body=1" type="text/javascript"></script>
+<script src="/assets/cloudinary/processing.js?body=1" type="text/javascript"></script>
+<script src="/assets/angular.cloudinary.js?body=1" type="text/javascript"></script>
+<script src="/assets/leaflet.js?body=1" type="text/javascript"></script>
+<script src="/assets/angular-leaflet-directive.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/leaflet/tile/Google.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery.timepicker.js?body=1" type="text/javascript"></script>
+<script src="/assets/moment.min.js?body=1" type="text/javascript"></script>
+<script src="/assets/account_transactions/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/account_transactions/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/app.js?body=1" type="text/javascript"></script>
+<script src="/assets/card_products/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/card_products/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/card_products/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/card_requests/controller.js?body=1" type="text/javascript"></script>
+<script src="/assets/card_requests/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/card_requests/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/cards/controller.js?body=1" type="text/javascript"></script>
+<script src="/assets/cards/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/cards/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/common.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/controllers/selected_row.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/directives/auto_complete.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/directives/check_or_no.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/directives/datepicker.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/directives/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/directives/ky_csrf.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/directives/mini_cart.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/directives/modal.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/directives/mygrid.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/directives/timepicker.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/directives/weather.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/filters/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/filters/validator.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/services/authentication.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/services/cloudinary.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/services/currentUser.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/services/gridColumn.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/services/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/common/services/retryQueue.js?body=1" type="text/javascript"></script>
+<script src="/assets/competition_entry/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/competition_entry/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/competition_entry/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/competitions/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/competitions/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/competitions/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/dashboard/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/dashboard/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/directives.js?body=1" type="text/javascript"></script>
+<script src="/assets/documents/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/documents/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/documents/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/events/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/events/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/events/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/filters.js?body=1" type="text/javascript"></script>
+<script src="/assets/import_process/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/import_process/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/import_process/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/kyck/kyckui.dropkyck.js?body=1" type="text/javascript"></script>
+<script src="/assets/location/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/location/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/location/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/messages/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/messages/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/money/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/money/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/money/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/notes/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/notes/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/notes/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/orders/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/orders/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/orders/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/organization/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/organization/directives.js?body=1" type="text/javascript"></script>
+<script src="/assets/organization/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/organization/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/payments/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/payments/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/payments/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/players/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/players/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/players/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/products/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/products/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/products/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/registrations/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/registrations/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/request/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/request/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/request/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/rosters/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/rosters/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/rosters/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/sanctioning_body/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/sanctioning_body/directives.js?body=1" type="text/javascript"></script>
+<script src="/assets/sanctioning_body/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/sanctioning_body/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/sanctioning_request/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/sanctioning_request/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/sanctioning_request/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/sanctions/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/sanctions/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/sanctions/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/seasons/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/seasons/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/seasons/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/staff/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/staff/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/staff/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/states/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/states/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/states/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/teams/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/teams/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/teams/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/underscore_mixin.js?body=1" type="text/javascript"></script>
+<script src="/assets/user_settings/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/user_settings/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/users/controllers.js?body=1" type="text/javascript"></script>
+<script src="/assets/users/index.js?body=1" type="text/javascript"></script>
+<script src="/assets/users/services.js?body=1" type="text/javascript"></script>
+<script src="/assets/zurb_rb.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+
+<script>
+    $(document).foundation();
+</script>
+
+</body>
+</html>

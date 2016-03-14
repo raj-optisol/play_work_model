@@ -1,0 +1,21 @@
+<% if @card.new? || @card.processed? %>
+  <%= form_tag approve_card_path, method: "post", class: "custom" do |f| %>
+    <%= hidden_field_tag "card_ids", [@card.kyck_id] %>
+    <%= hidden_field_tag "order_id", @card.order_id %>
+    <button type="submit" class="btn large" ng-disabled="!(cardIsApproved()) && cardFormIsDirty()">Approve</button>
+  <% end %>
+
+  <button class="btn large" ng-click="declineCard()" ng-disabled="card.status == 'Denied' || (!(cardIsApproved()) && cardFormIsDirty())">REJECT</button>
+<% end %>
+<% if @card.approved?%>
+  <%= form_tag card_path, method: "put", class: "custom" do |f| %>
+    <%= hidden_field_tag "card[status]", 'inactive' %>
+    <%= submit_tag "Deactivate", class:'btn large' %>
+  <% end %>
+<% end %>
+<% if @card.inactive? %>
+  <%= form_tag card_path, method: "put", class: "custom" do |f| %>
+    <%= hidden_field_tag "card[status]", 'approved' %>
+    <%= submit_tag "Activate", class:'btn large' %>
+  <% end %>
+<% end %>

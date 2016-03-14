@@ -1,0 +1,14 @@
+#!/bin/bash
+
+JAVA_HOME="/usr/lib/java/"
+export JAVA_HOME
+PATH=$JAVA_HOME/bin:$PATH
+export PATH
+
+export TORQUEBOX_HOME=/opt/torquebox
+export JBOSS_HOME=$TORQUEBOX_HOME/jboss
+export JRUBY_HOME=$TORQUEBOX_HOME/jruby
+export PATH=$JRUBY_HOME/bin:$PATH
+
+export GITHUB_OAUTH_TOKEN=66f12e6c6d07a26c72384d9fc9c9c776ac0dc918
+jruby -J-Xmx1024m -S bundle install --without development test

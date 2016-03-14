@@ -1,0 +1,13 @@
+<div class="cards-partner-pricing">
+    <%= image_tag "cards/cards-partner-faded.png", alt:"USCS" %>
+    <div class="pricing">
+        <h3><%= t("labels.pricing_details") %></h3>
+        <ul class="detail-list" ng-controller="JustCardProductsCtrl">
+            <li ng-repeat="cardProduct in cardProducts">
+                <span>{{cardProduct.name}}</span>
+                <strong>${{parseAmount(cardProduct.amount)}}</strong>
+            </li>
+        </ul>
+        <p>Age group prices are based on the player's date of birth, rather than the team they are registered with.</p>
+    </div>
+</div>

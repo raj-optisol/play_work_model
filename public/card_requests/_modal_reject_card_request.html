@@ -1,0 +1,52 @@
+<!--
+########################################
+START MODAL 4A TEMPLATE
+Shown when the "Reject" button is pressed.
+This modal is different than /views/card_requests/_modal_rejectrequest.html.erb
+########################################
+-->
+
+    <div class="panel primary">
+        <header class="collapse-bottom bordered">
+            <h3>REJECT CARD REQUESTS FOR:</h3>
+            <div class="tag-row">
+                <!-- .tag element can be repeated -->
+                <div class="tag primary">
+                    <img src="https://res.cloudinary.com/kyck-com/image/upload/user_avatar_syy1gy.png" alt=""/>
+                    <span><strong>Robert John Peterson</strong><br>
+                      Carolina Rapids
+                    </span>
+                </div>
+                <!-- end repeatable tag -->
+            </div>
+        </header>
+        <section class="collapse-top">
+            <form class="custom">
+                <div class="row collapse">
+                    <div class="small-12 large-12 columns">
+                        <label>Reason:</label>
+                        <textarea rows="3" ng-model="rejectNote.text"></textarea>
+                    </div>
+                </div>
+                <div class="row collapse">
+                    <div class="small-12 large-5 columns text-right">
+                        <!-- SET BELOW BUTTONS' CLASS TO DISABLED IF TRANSACTION STATUS != "RELEASED" -->
+                        <a href="#" class="btn" ng-disabled="_.isEmpty(rejectNote.text.trim())" ng-click="doDecline(true)">Reject with Full Refund *</a>
+                    </div>
+                    <div class="small-12 large-2 columns text-center">
+                        <p style="line-height: 29px;">OR</p>
+                    </div>
+                    <div class="small-12 large-5 columns">
+                        <a href="#" class="btn" ng-disabled="_.isEmpty(rejectNote.text.trim())" ng-click="doDecline(false)">Reject with No Refund</a>
+                    </div>
+                </div>
+                <p class="text-center" style="padding-top: 16px;">Partial refunds can only be issued after the entire order's transaction status changes to "Released".</p>
+            </form>
+        </section>
+    </div>
+    <a class="close-reveal-modal"></a>
+<!--
+########################################
+END MODAL 4A TEMPLATE
+########################################
+-->

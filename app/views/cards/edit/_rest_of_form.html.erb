@@ -1,0 +1,109 @@
+<%= hidden_field_tag :_method, "PUT" %>
+<%= hidden_field_tag :referer, (params[:referer] || request.headers['Actual-Referer']) %>
+<%= hidden_field_tag :step, 'save' %>
+<div class="panel secondary">
+  <header>
+    <h3>REQUESTED CARD INFORMATION</h3>
+  </header>
+
+  <!-- DOCUMENTS -->
+  <section class="divide-bottom-dotted collapse-top">
+    <%= render "/cards/edit/#{@card.kind.to_s.downcase}_documents" %>
+  </section>
+
+  <!-- PLAYER/STAFF INFO FORM -->
+  <section class="positioned divide-bottom-dotted">
+
+    <div class="avatar-column">
+      <label>User Avatar</label>
+      <div class="user-avatar">
+        <img ng-src="{{card.avatar_url}}" />
+      </div>
+    </div>
+    <div class="avatar-offset-column">
+      <div class="row">
+        <div class="small-12 large-12 columns">
+          <div class="row" >
+            <div class="small-12 large-11 columns">
+              <%=  label_tag "card[first_name]",t("forms.fields.first_name"), {"ng-model" => "card.first_name"} %>
+              <%=  text_field_tag "card[first_name]", nil,{"ng-model" => "card.first_name", "required" => "required"}%>
+              <%=  label_tag "card[middle_name]",t("forms.fields.middle_name"), {"ng-model" => "card.middle_name"} %>
+              <%=  text_field_tag "card[middle_name]", nil,{"ng-model" => "card.middle_name"}%>
+              <%=  label_tag "card[last_name]", t("forms.fields.last_name") %>
+              <%=  text_field_tag "card[last_name]",nil, {"ng-model" => "card.last_name", "required" => "required"} %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 large-6 columns">
+              <%=  label_tag "card[user_id]",t("forms.fields.id"), {"ng-model" => "card.user.id"} %>
+              <%=  text_field_tag "card[user_id]",nil, {"ng-model" => "card.user.id", "required" => "required", disabled: "disabled"} %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 large-4 columns">
+              <%=  label_tag "card[birthdate]", I18n.t("forms.fields.birthdate") %>
+              <%=  text_field_tag "card[birthdate]",nil, {"ng-model" => "card.birthdate", "datepicker" => '{"format":"M/d/y", "defaultDate":"-10y"}' }  %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 large-4 columns">
+              <%=  label_tag "card[expires_on]", I18n.t("forms.fields.expires_on") %>
+              <%=  text_field_tag "card[expires_on]",nil, {"ng-model" => "card.expires_on", "datepicker" => '{"format":"M/d/y", "defaultDate":"-10y"}' }  %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ORGANIZATION INFO -->
+  <section class="<% if @card.processor %>divide-bottom-dotted<% end %>">
+    <div class="row">
+      <div class="small-12 large-12 columns">
+
+        <div class="right text-center">
+          <div class="org-avatar" style="margin-bottom: 16px;">
+            <%= image_tag @card.carded_for_obj.avatar_url %>
+          </div>
+          <p><a href="#" class="btn block" ng-click="showMessagesFor(row)"><%=t("label.send_message")%></a></p>
+        </div>
+
+        <div class="left">
+          <div class="info-block minimal">
+            <h5>Organization Name</h5>
+            <p><%= link_to @card.carded_for.name, organization_path(@card.carded_for), target: "_blank"  %></p>
+
+            <h5>Organization ID</h5>
+            <p><%=@card.carded_for.kyck_id %></p>
+
+            <h5>Organization Type</h5>
+            <p><%=@card.carded_for.kind.to_s.titleize %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEAGUE NAME & LEAGUE ID -->
+  <% if @card.processor %>
+    <section>
+      <div class="row">
+        <div class="small-12 large-12 columns">
+          <div class="info-block minimal">
+            <h5>League Name</h5>
+            <p><%= link_to @card.processor.name, competition_path(@card.processor), target: "_blank"  %></p>
+
+            <h5>League ID</h5>
+            <p><%= @card.processor.kyck_id%></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  <% end %>
+</div>
+
+<div class="panel secondary">
+  <%= submit_tag "Save & Compare", class: 'btn large', style:'margin-right: 16px' %>
+  <%= submit_tag "Save & Return", class: 'btn', style:'margin-left: 0', name: 'save_and_return' %>
+</div>

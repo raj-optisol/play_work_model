@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="large-12 kyck-page">
+    <%  if !@org.sanctioned? %>
+  <div class="row">
+  <div class="large-8 columns">
+    <h3 style="margin-bottom: 18px;">
+      <%= t("sanctioning_required_subtitle") %>
+    </h3> 
+      <p><%= link_to t("click_here_to_request_sanctioning"), new_organization_sanctioning_request_path(@org.kyck_id) %></p>
+      <p>Once you are sanctioned, you will be able to:</p>
+    <% else %>
+      <h4><%= t("card_overview_subtitle") %>:</h4> 
+    <% end %>
+    <ul>
+      <li>
+        <%= link_to t("request_cards_link"), new_organization_card_request_path(@org), disabled: !@org.sanctioned?  %>
+      </li>
+      <li>
+        <%= link_to t("print_cards_link"), "#" , disabled: !@org.sanctioned?%></li>
+      <li>
+        <%= link_to t("view_previous_requests_link"), organization_cards_requests_path(@org) , disabled: !@org.sanctioned?%>
+      </li>
+    </ul>
+  </div>
+  <div class="large-4 columns" style="text-align:center">
+    <div class="row" style="margin-bottom: 3em">
+      <%= image_tag SanctioningBodyRepository.all.first.extend(SanctioningBodyRepresenter).avatar_url %>
+    </div>
+    <div class="row">
+      <span>US Club Soccer is the official partner for cards</span>
+    </div>
+  </div>
+
+</div>

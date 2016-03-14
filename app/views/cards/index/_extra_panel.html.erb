@@ -1,0 +1,12 @@
+<div class="panel secondary">
+  <header>
+    <h3 class="panel-heading" style="margin-bottom: 1.5em"><%= t("labels.extras") %></h3>
+  </header>
+  <ul class="no-bullet">
+    <li>
+      <strong><%= t("card_request_history") %></strong><br/>
+      <%= link_to t("labels.view"), polymorphic_path([@obj, 'card_requests']), class:"btn small dark right" %>
+      <p>See the status of any previous card request.</p>
+    </li>
+  </ul>
+</div>

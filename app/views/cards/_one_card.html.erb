@@ -1,0 +1,22 @@
+<header class="bordered"><h3><%= title %></h3></header>
+<section class="collapse-top ng-cloak" ng-show="!<%= js_obj %>.length">No cards were found.</section>
+<div class="vtag medium divide-bottom-dotted ng-cloak" ng-show="<%= js_obj %>.length" ng-repeat='existingCard in <%= js_obj %>'>
+    <h5>Organization:</h5>
+    <p>
+      <a target='_blank' ng-href='{{existingCard.carded_for.link}}'>{{existingCard.carded_for.name}}</a> <br/>
+      {{existingCard.carded_for.kind || 'Club'}}<br>
+      {{existingCard.carded_for.id}}</p>
+
+    <h5 ng-show="existingCard.processor">League:</h5>
+    <p ng-show="existingCard.processor">
+      <a ng-href='{{existingCard.processor.link}}'>{{existingCard.processor.name}}</a> <br/>
+      {{existingCard.processor.id}}
+    </p>
+
+    <h5>Timeline:</h5>
+    <p>
+      Requested on {{existingCard.created_at | kyckDate}}<br/>
+      Approved on {{existingCard.approved_on | kyckDate}}<br>
+      Expired on {{existingCard.expires_on | kyckDate }}<br/>
+    </p>
+</div>

@@ -1,0 +1,126 @@
+<div class="content" ng-controller="TeamCardsCtrl">
+  <div ng-init="defaultAvatar='<%= @org.default_avatar_url %>'" style="display:none"></div>
+  <div ng-init="order = <%= @order.to_json %>" style="display:none"></div>
+  <div class="row page-header">
+    <div class="large-8 columns">
+      <h2><span>Print Cards</span></h2>
+    </div>
+    <div class="large-4 columns right-align">
+      <%= render_cell :mini_cart,:show, current_user: current_user,  organization: @org%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <form name="filterForm" class="custom" novalidate ng-submit="applyFilter(filter)" >
+        <div class="panel primary">
+          <header>
+            <h3>Filters</h3>
+          </header>
+          <section>
+            <div class="row">
+              <div class="large-12 columns" >
+                <select id="filterPageSize" ng-model="pagingOptions.pageSize" ng-options="ps as ps + ' Results Per Page' for ps in pagingOptions.pageSizes" zurb-select>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns" >
+                <%=select_tag "filter[status]", options_for_select(CardData.get_status_values), id: 'filter_status', "ng-model" => "filter.status", prompt:  "All Status Types" , 'zurb-select' => 'zurb-select'%>
+              </div>
+            </div>
+            <div class="row action-row">
+              <div class="large-8 columns" >
+                <input type="text" class="pad-none" name="filter[last_name]" ng-model="filter.last_name" placeholder="<%=t('forms.fields.last_name')%>" />
+              </div>
+              <div class="large-4 columns text-right">
+                <button type="submit" class="btn" ng-disabled="form.$invalid" ><%= t("label.go") %></button>
+                <button type="reset"  class="btn secondary" ng-click="clearFilter()"><%= t("label.reset") %></button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </form>
+    </div>
+    <div class="large-6 columns">
+      <%= render "cards/index/info_panel" %>
+    </div>
+  </div>  <!-- END HEADER ROW -->
+
+
+  <div class="row">
+    <div class="mygrid" grid-data="myData"></div>
+  </div>
+  <div class="panel primary clearfix">
+    <p>Click the "Print All Cards" button below to print all of the above cards that have been approved. Or you can select up to {{max_card_selection}} individual cards to print from above.</p>
+    <a target="_blank" class="button btn large" title="<%=t("label.cards.print_all_cards")%>" ng-click="printCards()" >PRINT <span ng-if="card_selection.length == 0">ALL CARDS</span><span ng-if="card_selection.length > 0">{{card_selection.length}} CARD<span ng-if="card_selection.length > 1">S</span></span></a>
+    <button class="button btn secondary large" ng-show="card_selection.length > 0" ng-click="clearSelection()">Clear Selection</button>
+  </div>
+
+
+  <div id="personalItemsModal" class="reveal-modal large" style="padding:0;">
+    <div class="reveal-modal-header">
+      <h1 class="player-tag">
+        <span class="player-pic"></span>
+        <span class="player-name">
+          <strong>Brandon Sweet</strong><br>
+          4465AQWLG647992B<br>
+          MALE
+        </span>
+      </h1>
+    </div>
+    <div class="reveal-modal-body">
+      <table class="personal-info">
+        <tr>
+          <td>
+            <strong>Photo</strong>
+            <i class="icn-check"></i>
+            <span>Certified by <a href="#">Ryan Sproul</a> on 06/13/2011</span>
+          </td>
+          <td class="text-right">
+            <span class="icn-profile"></span>
+            <a href="#" class="icn-link view"><i class="icn-eye"></i> <strong>VIEW</strong></a>
+          </td>
+          <td class="text-right">
+            <a class="btn small" href="#">EDIT</a>
+            <a class="btn small trimmed" href=""><i class="icn-x"></i></a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <strong>Proof of Birth</strong>
+            <i class="icn-check"></i>
+            <span>Certified by <a href="#">Aimee Black</a> on 11/01/2011</span>
+          </td>
+          <td class="text-right">
+            <span class="img-pdf"></span>
+            <a href="#" class="icn-link view"><i class="icn-eye"></i> <strong>VIEW</strong></a>
+          </td>
+          <td class="text-right">
+            <a class="btn small" href="#">EDIT</a>
+            <a class="btn small trimmed" href=""><i class="icn-x"></i></a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <strong>Medical Waiver</strong>
+            <i class="icn-x"></i>
+            <span><a href="#">Upload Now</a></span>
+          </td>
+          <td class="text-right">
+            <a href="#" class="icn-link view disabled"><i class="icn-eye"></i> <strong>VIEW</strong></a>
+          </td>
+          <td class="text-right">
+            <a class="btn small" href="#">EDIT</a>
+            <a class="btn small trimmed" href=""><i class="icn-x"></i></a>
+          </td>
+        </tr>
+
+
+      </table>
+    </div>
+
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+AllCops:
+  RunRailsCops: true
+  Include:
+    - config.ru
+  Exclude:
+    - Rakefile
+    - db/**/*
+    - config/**/*
+    - script/**/*
+    - bin/**/*
+    - spec/**/*
+
+Documentation:
+  Enabled: false

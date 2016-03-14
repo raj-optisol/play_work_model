@@ -1,0 +1,6 @@
+{
+  "name": "kyck-registrar-web",
+  "dependencies": {
+    "kyck-notifications": "git@github.com:KYCK/kyck-notifications.git"
+  }
+}

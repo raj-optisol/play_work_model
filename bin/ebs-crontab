@@ -1,0 +1,7 @@
+#write out current crontab
+crontab -l > previous
+# The AWS keys are hardcoded to only describe instances and manage snapshots
+echo "00 * * * * ec2-snapshot --aws-access-key AKIAI5RKVT2YLOGLSV2Q --aws-secret-access-key '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' --volume-type data --aws-region us-east-1" >> previous
+#install new cron file
+crontab previous
+rm previous

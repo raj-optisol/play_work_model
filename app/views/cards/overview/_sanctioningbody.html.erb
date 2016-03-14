@@ -1,0 +1,32 @@
+<div  class="content" >
+
+  <div class="row page-header">
+    <div class="large-8 columns">
+      <h2><span><%= t("labels.cards_for", name: @sanctioning_body.name) %></span></h2>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="large-7 columns">
+      <div class="panel secondary" style="margin-bottom: 20px;">
+        <header>
+          <%= link_to "Go", sanctioning_body_card_requests_path(@sanctioning_body), class: "btn right" %>
+          <h3>
+            <%= link_to t("labels.card_requests"), sanctioning_body_card_requests_path(@sanctioning_body) %>
+          </h3>
+        </header> 
+      </div>
+
+      <div class="panel secondary" style="margin-bottom: 20px;">
+        <header>
+          <%= link_to "Go", sanctioning_body_cards_path(@sanctioning_body), class: "btn right" %>
+          <h3>
+            <%= link_to t("labels.cards"), sanctioning_body_cards_path(@sanctioning_body) %>
+          </h3>
+        </header> 
+      </div>
+    </div>
+  </div>
+
+</div>

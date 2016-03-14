@@ -1,0 +1,105 @@
+(function() {
+/* Start kyckNotification */
+'use strict';
+var kyckNotification = angular.module('KyckNotificationModule', ['LocalStorageModule']);
+
+kyckNotification.provider('kyckNotificationService', function() {
+
+  // You can set the Url with
+  // e.g. kyckNotificationServiceProvider.setBaseUrl('http://your-domain.com');
+  // With provider you can use config as this:
+  // myApp.config(function (localStorageServiceProvider) {
+  // kyckNotificationServiceProvider.setBaseUrl('http://your-domain.com');
+  // });
+  this.baseUrl = "<%= Settings.notification.host_url %>"; //'https://notifications.kyck.dev';
+  this.pathName = "<%= Settings.notification.path_name %>"; //'/api/v1/notifications.json'
+  this.stompUrl = "<%= Settings.notification.stomp_url %>"; //'https://localhost:15675/stomp'
+  this.stompHost = "<%= Settings.notification.stomp_host %>"; // dev
+
+  //this.webSocketClass = SockJS;
+
+  this.setBaseUrl = function(url) {
+    this.baseUrl = url;
+  }
+
+  this.notifications = {};
+
+
+  this.$get = ['$rootScope', '$http', 'localStorageService', function($rootScope, $http, localStorageService) {
+    var self = this;
+    var _stompClient;
+
+    //Stomp.WebSocketClass = self.webSocketClass;
+
+    // If there is a prefix set in the config lets use that with an appended period for readability
+    var loadNotifications = function() {
+      var hiddennots = localStorageService.get('hidden_notifications') || {};
+
+       return $http.get(self.baseUrl+self.pathName).success(function(resp) {
+         angular.forEach(resp, function(r){
+           if(!hiddennots[r.id])
+            self.notifications[r.id] = r;
+         });
+        });
+    };
+    var hideNotification = function(notId) {
+      var hiddennots = localStorageService.get('hidden_notifications') || {};
+      hiddennots[notId] = true;
+      localStorageService.set('hidden_notifications', hiddennots)
+      delete self.notifications[notId];
+    };
+    var isHidden = function(notId)
+    {
+      var hiddennots = localStorageService.get('hidden_notifications') || {};
+      return !!hiddennots[notId];
+    };
+
+    var getNotifications = function()
+    {
+      return self.notifications;
+    }
+
+    var connectStomp = function() {
+      _stompClient = new Stomp.client(self.stompUrl, "");
+      _stompClient.heartbeat.outgoing = 0;
+      _stompClient.heartbeat.incoming = 0;
+      var on_connect = function(x)
+      {
+        _stompClient.subscribe("/exchange/services.notifications", function(knot) {
+          var body = JSON.parse(knot.body);
+          if(body.active && !isHidden(body.id))
+            self.notifications[body.id] = body;
+          else if (!body.active) {
+            delete self.notifications[body.id];
+          }
+
+          if(!$rootScope.$$phase) {
+            $rootScope.$digest()
+          }
+        });
+      };
+      var on_error = function()
+      {
+        console.log('error');
+        console.log(arguments);
+      }
+      // $scope.client.connect("guest", "guest", on_connect, on_error, 'dev');
+      _stompClient.connect("notification", "notification", on_connect, on_error, self.stompHost);
+    }
+
+    var getStompClient = function() {
+      return _stompClient;
+    }
+
+    loadNotifications();
+    //connectStomp();
+
+    return {
+      stompClient: getStompClient,
+      notifications: getNotifications,
+      loadNotifications: loadNotifications,
+      hideNotification: hideNotification
+    };
+  }];
+});
+}).call(this);

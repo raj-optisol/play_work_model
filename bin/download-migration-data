@@ -1,0 +1,24 @@
+#!/usr/bin/env jruby
+codes = [
+  {code: "g3namjb5nv", file: "address"},
+  {code: "09oel90d4n", file: "club"},
+  {code: "14zyps8dbs", file: "cms_user"},
+  {code: "hjv5jrvw14", file: "league"},
+  {code: "1gl17xgv2j", file: "member"},
+  {code: "as4gsrc6sw", file: "member_login"},
+  {code: "t3lw60uz90", file: "member_passcard_request"},
+  {code: "8ag5ivtksf", file: "member_passcard_request_3yr"},
+  {code: "kmbulqq30t", file: "passcard_request"},
+  {code: "ff9uj2u4xs", file: "passcard_request_3yr"},
+  {code: "5j4dzg7jnn", file: "player_detail"},
+  {code: "uvg36wb4lv", file: "team"},
+  {code: "rqsmgkzq8p", file: "tournament"}
+]
+
+codes.each do |code_hash|
+  `curl https://www.strongspace.com/shared/#{code_hash[:code]} -o csv/#{code_hash[:file]}.csv` unless File.exists?("csv/#{code_hash[:file]}.csv")
+end
+
+`perl -pi -e 's/[[:^ascii:]]//g' < csv/address.csv > csv/clean-address.csv`
+`rm csv/address.csv`
+`mv csv/clean-address.csv csv/address.csv` 

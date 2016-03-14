@@ -1,0 +1,58 @@
+class PermissionSet
+
+  MANAGE_MONEY = 'ManageMoney'
+  RUN_FINANCIAL_REPORT = 'RunFinancialReports'
+  MANAGE_REQUEST = 'ManageRequests'
+  RUN_REPORT =  'RunReports'
+  MANAGE_ORGANIZATION ='ManageOrganizations'
+  MANAGE_TEAM = 'ManageTeams'
+  MANAGE_PLAYER = 'ManagePlayers'
+  MANAGE_STAFF = 'ManageStaff'
+  MANAGE_ROSTER = 'ManageRosters'
+  MANAGE_SANCTIONING_BODY = 'ManageSanctioningBody'
+  MANAGE_COMPETITION = 'ManageCompetitions'
+  MANAGE_SCHEDULES = 'ManageSchedules'
+  MANAGE_CARD = 'ManageCards'
+  MANAGE_DOCUMENT = 'ManageDocuments'
+
+  PRINT_CARD = 'PrintCard'
+  PRINT_PLAYER_CARD = 'PrintPlayerCards'
+  REQUEST_CARD = 'RequestCard'
+  REQUEST_PLAYER_CARD = 'RequestPlayerCards'
+  REQUEST_STAFF_CARD = 'RequestStaffCard'
+
+  def self.for_registrar
+    [MANAGE_MONEY, MANAGE_ORGANIZATION, MANAGE_REQUEST, MANAGE_STAFF, MANAGE_PLAYER, MANAGE_TEAM, MANAGE_SCHEDULES, MANAGE_COMPETITION, MANAGE_ROSTER, MANAGE_CARD, MANAGE_DOCUMENT, REQUEST_CARD, PRINT_CARD]
+  end
+
+  def self.for_staff
+    [MANAGE_STAFF, MANAGE_TEAM, MANAGE_ROSTER, MANAGE_PLAYER]
+  end
+
+  def self.for_coaches
+    [MANAGE_ROSTER, MANAGE_PLAYER]
+  end
+
+  def self.for_uscs
+    [
+      MANAGE_MONEY, MANAGE_ORGANIZATION, MANAGE_REQUEST, MANAGE_STAFF,
+      MANAGE_CARD, RUN_FINANCIAL_REPORT
+    ]
+  end
+
+  def self.for_organization
+    [MANAGE_MONEY, MANAGE_ORGANIZATION, MANAGE_REQUEST, MANAGE_STAFF, MANAGE_PLAYER, MANAGE_TEAM, MANAGE_ROSTER, MANAGE_SCHEDULES, MANAGE_COMPETITION, MANAGE_DOCUMENT, REQUEST_CARD, PRINT_CARD]
+  end
+
+  def self.for_team
+    [MANAGE_TEAM, MANAGE_REQUEST, MANAGE_STAFF, MANAGE_PLAYER, MANAGE_ROSTER, MANAGE_SCHEDULES, MANAGE_DOCUMENT, REQUEST_CARD, PRINT_CARD]
+  end
+
+  def self.for_competition
+    [MANAGE_TEAM, MANAGE_REQUEST, MANAGE_STAFF, MANAGE_ROSTER, MANAGE_SCHEDULES]
+  end
+
+  def self.for_competition_with_cards
+    for_competition + [MANAGE_CARD]
+  end
+end

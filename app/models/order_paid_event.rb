@@ -1,0 +1,3 @@
+class OrderPaidEvent < PublisherEvent
+
+end

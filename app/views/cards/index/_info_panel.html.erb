@@ -1,0 +1,15 @@
+<div class="panel secondary">
+  <div class="text-right">
+    <a data-reveal-id="card_help_modal" class="panel-heading" href="javascript:void(0)"><%= t("card_information.card_help_link_text") %></a>
+  </div>
+  <header>
+    <h3 class="panel-heading"><%= t("labels.information") %></h3>
+  </header>
+  <p> <%= t("card_information.line1") %> </p>
+  <p> <%= t("card_information.line2") %> </p>
+  <p>
+    <%= t("card_information.line3") %>
+    <%= link_to t("card_information.us_club_soccer"), t("card_information.us_club_help_link"), target: "_blank" %>
+  </p>
+</div>
+<%= render 'common/card_status_help' %>

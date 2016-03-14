@@ -1,0 +1,15 @@
+#!/bin/bash
+
+JAVA_HOME="/usr/lib/java/"
+export JAVA_HOME
+PATH=$JAVA_HOME/bin:$PATH
+export PATH
+
+export TORQUEBOX_HOME=/opt/torquebox
+export JBOSS_HOME=$TORQUEBOX_HOME/jboss
+export JRUBY_HOME=$TORQUEBOX_HOME/jruby
+export PATH=$JRUBY_HOME/bin:$PATH
+
+jruby -J-Xmx1024m -S bundle exec rake assets:clean 
+jruby -J-Xmx1024m -S bundle exec rake assets:precompile
+

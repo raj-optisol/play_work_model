@@ -1,0 +1,54 @@
+<div class="content" ng-controller="EditCardCtrl">
+  <div class="row page-header">
+    <div class="large-12 columns">
+      <h2>
+        <span><%= t("title.card.edit", card_type:@card.kind, name: @card.carded_user.full_name) %></span>
+        <% if @card.order_id %>
+          <%= link_to sanctioning_body_card_request_path(@sanctioning_body, @card.order_id), class:'icnlink' do%>
+            <i class="icn-caret-left"></i>
+            <span>Back to Card Request</span>
+          <% end %>
+        <% end %>
+      </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="row">
+      <div ng-init="setCard(<%=@card.to_json%>)" style="display:none"></div>
+
+      <div class="small-12 large-7 left">
+
+        <!-- ADMINISTRATOR PANEL -->
+        <div class="panel secondary">
+          <header>
+            <h3>Card Request <%= "(RENEWAL)" if @card.is_renewal %></h3>
+          </header>
+          <section class="collapse-top">
+            <div class="panel secondary flat">
+              <div class="row">
+                <div class="small-12 large-7 columns">
+                  <div class="button-panel">
+                    <%= render '/cards/edit/button_panel', approve_card_path: approve_sanctioning_body_cards_path(@sanctioning_body), card_path: sanctioning_body_card_path(@sanctioning_body) %>
+                  </div>
+                </div>
+                <div class="small-12 large-5 columns">
+                  <p class="ng-cloak" ng-show="!(cardIsApproved()) && cardFormIsDirty()" style="padding-top: 8px;">Please save your changes before you can accept or reject this card.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <%= form_tag card_path(@card), novalidate: "novalidate", name: 'cardForm', "ky-submit" => "", "class" => "custom"  do |f| %>
+          <%= render "/cards/edit/rest_of_form" %>
+        <% end %>
+      </div>
+
+      <%= render "/cards/edit/other_cards" %>
+    </div>
+  </div>
+
+  <%= render "/cards/edit/modals" %>
+
+</div>
